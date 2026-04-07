@@ -18,7 +18,7 @@ model = dict(
 # 3. Update Dataset Paths and Batch Size
 # Adjusted for a single GPU
 data = dict(
-    samples_per_gpu=4,  # Batch size
+    samples_per_gpu=8,  # Batch size
     workers_per_gpu=4,  # Parallel CPU threads
     train=dict(data_root='data/5potsdam'),
     val=dict(data_root='data/5potsdam'),
@@ -27,7 +27,7 @@ data = dict(
 
 # 4. Apply the Linear Scaling Rule for Learning Rate
 # Original SegNeXt is 0.00006 for Batch 16 (8gpu). For Batch 4 (1gpu), use 0.000015
-optimizer = dict(lr=0.000015)
+# optimizer = dict(lr=0.000015)
 
 # 5. Stabilize Gradients (Crucial for remote sensing)
 optimizer_config = dict(grad_clip=dict(max_norm=0.35, norm_type=2))

@@ -8,6 +8,8 @@ _base_ = [
 
 # 2. Update Model for loveDA (6 classes + background = 7)
 model = dict(
+    backbone=dict(
+        init_cfg=dict(type='Pretrained', checkpoint='pretrained/segnext_base_512x512_ade_160k.pth',prefix='backbone.')),    
     decode_head=dict(
         num_classes=7,
         # average_non_ignore helps small classes
@@ -28,7 +30,7 @@ data = dict(
 # # Original SegNeXt is 0.00006 for Batch 16 (8gpu). For Batch 4 (1gpu), we use 0.000015
 # optimizer = dict(lr=0.000015)
 # Original SegNeXt is 0.00006 for Batch 16 (8gpu). For Batch 8 (2gpu), we use 0.00003
-optimizer = dict(lr=0.00003)
+# optimizer = dict(lr=0.00003)
 
 # 5. Stabilize Gradients for fp16
 optimizer_config = dict(grad_clip=dict(max_norm=0.35, norm_type=2))

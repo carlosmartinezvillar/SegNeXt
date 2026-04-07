@@ -8,6 +8,8 @@ _base_ = [
 
 # 2. Update Model for loveDA (6 classes + background = 7)
 model = dict(
+    backbone=dict(
+        init_cfg=dict(type='Pretrained', checkpoint='pretrained/segnext_base_512x512_ade_160k.pth',prefix='backbone.')),    
     decode_head=dict(
         num_classes=7,
         # average_non_ignore helps small classes
