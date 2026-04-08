@@ -19,12 +19,16 @@ model = dict(
 
 # 3. Update Dataset Paths and Batch Size
 data = dict(
+    _delete_=True,
     samples_per_gpu=8,  # Batch size
     workers_per_gpu=4,  # Parallel CPU threads
     train=dict(data_root='data/isaid'),
     val=dict(data_root='data/isaid'),
     test=dict(data_root='data/isaid')
 )
+
+train_pipeline = None
+test_pipeline = None
 
 # 4. Apply the Linear Scaling Rule for Learning Rate
 # # Original SegNeXt is 0.00006 for Batch 16 (8gpu). For Batch 4 (1gpu), use 0.000015
