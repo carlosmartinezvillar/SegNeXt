@@ -1,9 +1,11 @@
 _base_ = [
     '../../_base_/models/mscan.py',
-    '../../_base_/datasets/ade20k_repeat.py',
     '../../_base_/default_runtime.py',
     '../../_base_/schedules/schedule_160k_adamw.py'
 ]
+#removed     '../../_base_/datasets/ade20k_repeat.py',
+
+
 # model settings
 norm_cfg = dict(type='SyncBN', requires_grad=True)
 ham_norm_cfg = dict(type='GN', num_groups=32, requires_grad=True)
