@@ -21,11 +21,11 @@ model = dict(
     )        
 )
 
-data = dict(_delete_=True)
-train_pipeline = None
-test_pipeline = None
-dataset_type = 'PotsdamDataset'
-data_root = 'data/6potsdam'
+# data = dict(_delete_=True)
+# train_pipeline = None
+# test_pipeline = None
+# dataset_type = 'PotsdamDataset'
+# data_root = 'data/6potsdam'
 
 # 3. Update Dataset Paths and Batch Size
 data = dict(
