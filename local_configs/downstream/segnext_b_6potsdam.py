@@ -29,33 +29,6 @@ data = dict(
     test=dict(data_root='data/6potsdam')
 )
 
-# model = dict(
-#     decode_head=dict(
-#         type='LightHamHead',
-#         # Channels for MSCAN-B (Base)
-#         in_channels=[128, 320, 512], 
-#         in_index=[1, 2, 3],
-#         channels=512,
-#         ham_channels=512,
-#         num_classes=6,  # Potsdam classes
-#         dropout_ratio=0.1,
-#         loss_decode=dict(
-#             type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)
-#     ),
-#     auxiliary_head=dict(
-#         type='FCNHead',
-#         in_channels=320,   # Stage 3 output for MSCAN-B
-#         channels=256,      # Standard internal channels for Base
-#         num_classes=6,     # Potsdam classes
-#         in_index=2,
-#         num_convs=1,
-#         concat_input=False,
-#         dropout_ratio=0.1,
-#         loss_decode=dict(
-#             type='CrossEntropyLoss', use_sigmoid=False, loss_weight=0.4)
-#     )
-# )
-
 
 # 4. Apply the Linear Scaling Rule for Learning Rate
 # # Original SegNeXt is 0.00006 for Batch 16 (8gpu). For Batch 4 (1gpu), use 0.000015

@@ -12,18 +12,16 @@ model = dict(
         init_cfg=dict(type='Pretrained', checkpoint='pretrained/segnext_base_512x512_ade_160k.pth',prefix='backbone.')
     ),
     decode_head=dict(
+        type='LightHamHead',
         num_classes=7,
         # average_non_ignore helps small classes
         loss_decode=dict(type='CrossEntropyLoss', avg_non_ignore=True)
-    ),
-    auxiliary_head=dict(
-        num_classes=16
     )
 )
 
 # 3. Update Dataset Paths and Batch Size
 data = dict(
-    samples_per_gpu=8,  # Batch size
+    samples_per_gpu=16,  # Batch size
     workers_per_gpu=4,  # Parallel CPU threads
     train=dict(data_root='data/loveDA'),
     val=dict(data_root='data/loveDA'),
