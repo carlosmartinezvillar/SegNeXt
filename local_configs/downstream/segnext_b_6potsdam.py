@@ -1,9 +1,9 @@
 # 1. Inherit
 _base_ = [
     '../segnext/base/segnext.base.512x512.ade.160k.py', # architecture
-    '../../configs/_base_/datasets/potsdam.py',         # 6 potsdam 
-    '../_base_/default_runtime.py',                     # Logging/Checkpoints
-    '../_base_/schedules/schedule_160k_adamw.py'              # 160k iter schedule
+    '../../configs/_base_/datasets/potsdam.py'         # 6 potsdam 
+    # '../_base_/default_runtime.py',                     # Logging/Checkpoints
+    # '../_base_/schedules/schedule_160k_adamw.py'              # 160k iter schedule
 ]
 
 # 2. Update Model for Potsdam
