@@ -22,6 +22,8 @@ model = dict(
 )
 
 data = dict(_delete_=True)
+train_pipeline = None
+test_pipeline = None
 dataset_type = 'PotsdamDataset'
 data_root = 'data/6potsdam'
 
@@ -34,8 +36,6 @@ data = dict(
     test=dict(data_root='data/6potsdam')
 )
 
-# train_pipeline = None
-# test_pipeline = None
 
 # 4. Apply the Linear Scaling Rule for Learning Rate
 # # Original SegNeXt is 0.00006 for Batch 16 (8gpu). For Batch 4 (1gpu), use 0.000015
