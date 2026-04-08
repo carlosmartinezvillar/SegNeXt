@@ -17,7 +17,7 @@ model = dict(
         loss_decode=dict(type='CrossEntropyLoss', avg_non_ignore=True)
     ),
     auxiliary_head=dict(
-        num_classes=6  # CRITICAL: If you miss this, it will crash
+        num_classes=6
     )        
 )
 

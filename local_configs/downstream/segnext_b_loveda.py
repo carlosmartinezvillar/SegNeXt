@@ -2,18 +2,22 @@
 _base_ = [
     '../segnext/base/segnext.base.512x512.ade.160k.py',  # architecture
     '../../configs/_base_/datasets/loveda.py',            # iSAID
-    '../_base_/default_runtime.py',                       # Logging/Checkpoints
-    '../_base_/schedules/schedule_160k.py'                # 160k iter schedule
+    # '../_base_/default_runtime.py',                       # Logging/Checkpoints
+    # '../_base_/schedules/schedule_160k.py'                # 160k iter schedule
 ]
 
 # 2. Update Model for loveDA (6 classes + background = 7)
 model = dict(
     backbone=dict(
-        init_cfg=dict(type='Pretrained', checkpoint='pretrained/segnext_base_512x512_ade_160k.pth',prefix='backbone.')),
+        init_cfg=dict(type='Pretrained', checkpoint='pretrained/segnext_base_512x512_ade_160k.pth',prefix='backbone.')
+    ),
     decode_head=dict(
         num_classes=7,
         # average_non_ignore helps small classes
         loss_decode=dict(type='CrossEntropyLoss', avg_non_ignore=True)
+    ),
+    auxiliary_head=dict(
+        num_classes=16
     )
 )
 

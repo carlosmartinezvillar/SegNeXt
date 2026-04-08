@@ -1,34 +1,34 @@
 # 1. Inherit
 _base_ = [
     '../segnext/base/segnext.base.512x512.ade.160k.py',  # architecture
-    '../../configs/_base_/datasets/isaid.py',             # iSAID
-    '../_base_/default_runtime.py',                       # Logging/Checkpoints
-    '../_base_/schedules/schedule_160k.py'                # 160k iter schedule
+    '../../configs/_base_/datasets/isaid.py',            # iSAID
+    # '../_base_/default_runtime.py',                    # Logging/Checkpoints
+    # '../_base_/schedules/schedule_160k_adamw.py'       # 160k iter schedule
 ]
 
 # 2. Update Model for iSAID (15 classes + background = 16)
 model = dict(
     backbone=dict(
-        init_cfg=dict(type='Pretrained', checkpoint='pretrained/segnext_base_512x512_ade_160k.pth',prefix='backbone.')),
+        init_cfg=dict(type='Pretrained', checkpoint='pretrained/segnext_base_512x512_ade_160k.pth',prefix='backbone.')
+    ),
     decode_head=dict(
         num_classes=16,
         # average_non_ignore helps small classes
         loss_decode=dict(type='CrossEntropyLoss', avg_non_ignore=True)
-    )
+    ),
+    auxiliary_head=dict(
+        num_classes=16
+    )   
 )
 
 # 3. Update Dataset Paths and Batch Size
 data = dict(
-    _delete_=True,
     samples_per_gpu=8,  # Batch size
     workers_per_gpu=4,  # Parallel CPU threads
     train=dict(data_root='data/isaid'),
     val=dict(data_root='data/isaid'),
     test=dict(data_root='data/isaid')
 )
-
-train_pipeline = None
-test_pipeline = None
 
 # 4. Apply the Linear Scaling Rule for Learning Rate
 # # Original SegNeXt is 0.00006 for Batch 16 (8gpu). For Batch 4 (1gpu), use 0.000015
