@@ -22,7 +22,7 @@ model = dict(
 
 # 3. Update Dataset Paths and Batch Size
 data = dict(
-    samples_per_gpu=8,  # Batch size
+    samples_per_gpu=16,  # Batch size
     workers_per_gpu=4,  # Parallel CPU threads
     train=dict(data_root='data/6potsdam'),
     val=dict(data_root='data/6potsdam'),
