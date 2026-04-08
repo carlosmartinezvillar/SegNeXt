@@ -21,9 +21,12 @@ model = dict(
     )        
 )
 
+data = dict(_delete_=True)
+dataset_type = 'PotsdamDataset'
+data_root = 'data/6potsdam'
+
 # 3. Update Dataset Paths and Batch Size
-data = dict( 
-    _delete_=True,
+data = dict(
     samples_per_gpu=8,  # Batch size
     workers_per_gpu=4,  # Parallel CPU threads
     train=dict(data_root='data/6potsdam'),
