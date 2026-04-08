@@ -23,9 +23,9 @@ model = dict(
 data = dict(
     samples_per_gpu=8,  # Batch size
     workers_per_gpu=4,  # Parallel CPU threads
-    train=dict(data_root='data/isaid'),
-    val=dict(data_root='data/isaid'),
-    test=dict(data_root='data/isaid')
+    train=dict(data_root='data/iSAID'),
+    val=dict(data_root='data/iSAID'),
+    test=dict(data_root='data/iSAID')
 )
 
 # 4. Apply the Linear Scaling Rule for Learning Rate
