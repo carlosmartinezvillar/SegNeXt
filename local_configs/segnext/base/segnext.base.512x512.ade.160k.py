@@ -3,7 +3,7 @@ _base_ = [
     '../../_base_/default_runtime.py',
     '../../_base_/schedules/schedule_160k_adamw.py'
 ]
-#removed     '../../_base_/datasets/ade20k_repeat.py',
+#removed '../../_base_/datasets/ade20k_repeat.py' to load in subsequent config
 
 
 # model settings
@@ -35,7 +35,7 @@ model = dict(
 
 # data = dict(samples_per_gpu=4)
 evaluation = dict(interval=8000, metric='mIoU')
-checkpoint_config = dict(by_epoch=False, interval=8000)
+checkpoint_config = dict(by_epoch=False, interval=8000, save_optimizer=False)
 # optimizer
 optimizer = dict(_delete_=True, type='AdamW', lr=0.00006, betas=(0.9, 0.999), weight_decay=0.01,
                  paramwise_cfg=dict(custom_keys={'pos_block': dict(decay_mult=0.),
